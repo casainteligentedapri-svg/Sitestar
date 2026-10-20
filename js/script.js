@@ -38,6 +38,39 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', () => nav.classList.remove('open'));
   });
 
+  // Botão flutuante do WhatsApp
+  const waBtn = document.getElementById('waBtn');
+  const waMenu = document.getElementById('waMenu');
+
+  waBtn.addEventListener('click', () => {
+    waMenu.classList.toggle('open');
+  });
+
+  // Seletores de WhatsApp (header e hero)
+  const waPickers = document.querySelectorAll('.wa-picker');
+
+  waPickers.forEach(picker => {
+    const trigger = picker.querySelector('.wa-picker__trigger');
+    const menu = picker.querySelector('.wa-picker__menu');
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = menu.classList.contains('open');
+      document.querySelectorAll('.wa-picker__menu.open').forEach(m => m.classList.remove('open'));
+      if (!isOpen) menu.classList.add('open');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!document.getElementById('waFloat').contains(e.target)) {
+      waMenu.classList.remove('open');
+    }
+    waPickers.forEach(picker => {
+      if (!picker.contains(e.target)) {
+        picker.querySelector('.wa-picker__menu').classList.remove('open');
+      }
+    });
+  });
+
   // Animação de revelação ao rolar
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
