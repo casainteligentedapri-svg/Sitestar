@@ -26,13 +26,14 @@ ul{list-style:none;}
 img{max-width:100%;display:block;}
 .container{width:100%;max-width:1160px;margin:0 auto;padding:0 24px;}
 section{padding:90px 0;}
+.services{padding-top:50px;}
 .eyebrow{
   display:inline-block;
   font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   color:var(--accent-dark);margin-bottom:14px;
 }
 .text-accent{color:var(--accent);}
-.section-head{text-align:center;max-width:620px;margin:0 auto 50px;}
+.section-head{text-align:center;max-width:620px;margin:0 auto 36px;}
 .section-head h2{font-size:clamp(1.7rem,3vw,2.3rem);}
 
 /* reveal animation */
@@ -53,6 +54,30 @@ section{padding:90px 0;}
 }
 .btn--whatsapp:hover{background:var(--whatsapp-dark);transform:translateY(-2px);}
 
+/* ========= WHATSAPP PICKER (header / hero) ========= */
+.wa-picker{position:relative;display:inline-block;}
+.wa-picker__trigger{font-family:inherit;}
+.wa-picker__menu{
+  position:absolute;top:calc(100% + 10px);right:0;
+  background:#fff;border-radius:var(--radius-md);box-shadow:0 16px 36px rgba(11,21,48,.22);
+  padding:10px;min-width:170px;display:flex;flex-direction:column;gap:4px;
+  opacity:0;pointer-events:none;transform:translateY(-8px);
+  transition:opacity .2s ease, transform .2s ease;z-index:50;
+}
+.wa-picker__menu.open{opacity:1;pointer-events:auto;transform:translateY(0);}
+.wa-picker__title{
+  font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--gray-500);padding:6px 10px 2px;
+}
+.wa-picker__menu a{
+  display:flex;align-items:center;gap:8px;padding:10px 10px;border-radius:8px;
+  color:var(--navy-900);font-weight:600;font-size:.92rem;transition:background .2s ease;
+}
+.wa-picker__menu a:hover{background:var(--gray-100);}
+.wa-picker__menu a::before{
+  content:"";width:8px;height:8px;border-radius:50%;background:var(--whatsapp);flex-shrink:0;
+}
+
 /* ========= HEADER ========= */
 .header{
   position:fixed;top:0;left:0;width:100%;z-index:1000;
@@ -64,9 +89,8 @@ section{padding:90px 0;}
 .header__inner{display:flex;align-items:center;justify-content:space-between;gap:20px;}
 .logo{display:flex;align-items:center;gap:10px;}
 .logo__img{
-  width:36px;height:36px;object-fit:contain;
-  background:#fff;border-radius:50%;padding:5px;
-  box-shadow:0 4px 12px rgba(0,0,0,.2);
+  height:52px;width:auto;object-fit:contain;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,.35));
 }
 .logo__text{color:#fff;font-family:var(--font-head);font-weight:500;letter-spacing:.04em;font-size:1rem;}
 .logo__text strong{font-weight:800;}
@@ -80,14 +104,14 @@ section{padding:90px 0;}
 .nav__toggle span{width:22px;height:2px;background:#fff;border-radius:2px;}
 
 /* ========= HERO ========= */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;color:#fff;}
+.hero{position:relative;min-height:auto;display:flex;align-items:center;color:#fff;}
 .hero__media{position:absolute;inset:0;z-index:-1;}
 .hero__media img{width:100%;height:100%;object-fit:cover;}
 .hero__overlay{
   position:absolute;inset:0;
   background:linear-gradient(100deg, rgba(8,14,34,.97) 0%, rgba(8,14,34,.93) 40%, rgba(8,14,34,.62) 68%, rgba(8,14,34,.28) 100%);
 }
-.hero__content{max-width:640px;padding-top:120px;padding-bottom:60px;}
+.hero__content{max-width:640px;padding-top:150px;padding-bottom:70px;}
 .hero h1{font-size:clamp(2.1rem,4.2vw,3.1rem);margin:18px 0 18px;font-weight:700;color:#fff;}
 .hero p{font-size:1.05rem;color:#d7dceb;margin-bottom:32px;max-width:520px;}
 .hero__cta{display:flex;gap:16px;flex-wrap:wrap;}
@@ -108,6 +132,34 @@ section{padding:90px 0;}
 }
 .card h3{font-size:1.1rem;margin-bottom:8px;}
 .card p{color:var(--gray-500);font-size:.9rem;}
+
+/* ========= TRUST / CONFIANÇA ========= */
+.trust{position:relative;color:#fff;overflow:hidden;}
+.trust__media{position:absolute;inset:0;z-index:-1;}
+.trust__media img{width:100%;height:100%;object-fit:cover;}
+.trust__overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(120deg, rgba(8,14,34,.95) 15%, rgba(8,14,34,.88) 45%, rgba(10,30,70,.75) 100%);
+}
+.trust__inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center;}
+.trust__text{max-width:420px;}
+.trust__text .eyebrow{color:var(--accent);}
+.trust__text h2{color:#fff;font-size:clamp(1.6rem,2.6vw,2.1rem);margin-bottom:16px;}
+.trust__text p{color:#cfd5e8;}
+.trust__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.trust__card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--radius-lg);padding:28px 22px;backdrop-filter:blur(6px);
+  transition:transform .3s ease, background .3s ease;
+}
+.trust__card:hover{transform:translateY(-6px);background:rgba(255,255,255,.12);}
+.trust__icon{
+  width:50px;height:50px;border-radius:14px;margin-bottom:16px;
+  background:linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color:#fff;display:flex;align-items:center;justify-content:center;
+}
+.trust__card h3{color:#fff;font-size:1.05rem;margin-bottom:8px;}
+.trust__card p{color:#c3cae0;font-size:.88rem;}
 
 /* ========= ABOUT / MISSÃO VALORES VISÃO ========= */
 .about{background:var(--gray-100);}
@@ -155,19 +207,39 @@ section{padding:90px 0;}
 .logo--footer .logo__text{color:#fff;}
 
 /* ========= FLOATING WHATSAPP ========= */
-.whatsapp-float{
-  position:fixed;bottom:26px;right:26px;z-index:999;
-  width:60px;height:60px;border-radius:50%;
+.whatsapp-float{position:fixed;bottom:26px;right:26px;z-index:999;}
+.whatsapp-float__btn{
+  width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;
   background:var(--whatsapp);color:#fff;
   display:flex;align-items:center;justify-content:center;
   box-shadow:0 14px 30px rgba(37,211,102,.45);
   animation:pulse 2.4s infinite;
 }
-.whatsapp-float:hover{background:var(--whatsapp-dark);}
+.whatsapp-float__btn:hover{background:var(--whatsapp-dark);}
 @keyframes pulse{
   0%{box-shadow:0 0 0 0 rgba(37,211,102,.55);}
   70%{box-shadow:0 0 0 16px rgba(37,211,102,0);}
   100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+}
+.whatsapp-float__menu{
+  position:absolute;bottom:calc(100% + 14px);right:0;
+  background:#fff;border-radius:var(--radius-md);box-shadow:0 16px 36px rgba(11,21,48,.25);
+  padding:10px;min-width:170px;display:flex;flex-direction:column;gap:4px;
+  opacity:0;pointer-events:none;transform:translateY(10px);
+  transition:opacity .2s ease, transform .2s ease;
+}
+.whatsapp-float__menu.open{opacity:1;pointer-events:auto;transform:translateY(0);}
+.whatsapp-float__title{
+  font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--gray-500);padding:6px 10px 2px;
+}
+.whatsapp-float__menu a{
+  display:flex;align-items:center;gap:8px;padding:10px 10px;border-radius:8px;
+  color:var(--navy-900);font-weight:600;font-size:.92rem;transition:background .2s ease;
+}
+.whatsapp-float__menu a:hover{background:var(--gray-100);}
+.whatsapp-float__menu a::before{
+  content:"";width:8px;height:8px;border-radius:50%;background:var(--whatsapp);flex-shrink:0;
 }
 
 /* ========= BACK TO TOP ========= */
@@ -185,6 +257,9 @@ section{padding:90px 0;}
 @media (max-width:980px){
   .services__grid{grid-template-columns:repeat(2,1fr);}
   .about__grid{grid-template-columns:1fr;}
+  .trust__inner{grid-template-columns:1fr;gap:36px;}
+  .trust__text{max-width:none;}
+  .trust__grid{grid-template-columns:repeat(3,1fr);}
 }
 @media (max-width:760px){
   section{padding:70px 0;}
@@ -199,4 +274,5 @@ section{padding:90px 0;}
   .services__grid{grid-template-columns:1fr;}
   .contact__inner{flex-direction:column;align-items:flex-start;}
   .footer__inner{flex-direction:column;align-items:flex-start;}
+  .trust__grid{grid-template-columns:1fr;}
 }
