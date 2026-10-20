@@ -38,20 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', () => nav.classList.remove('open'));
   });
 
-  // Botão flutuante do WhatsApp
-  const waBtn = document.getElementById('waBtn');
-  const waMenu = document.getElementById('waMenu');
-
-  waBtn.addEventListener('click', () => {
-    waMenu.classList.toggle('open');
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!document.getElementById('waFloat').contains(e.target)) {
-      waMenu.classList.remove('open');
-    }
-  });
-
   // Animação de revelação ao rolar
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
